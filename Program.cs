@@ -3,33 +3,30 @@
 namespace DiscordC2;
 
  public class Server {
-     public static async Task Main(string[] args)
-     {
-         var discord = new DiscordClient(new DiscordConfiguration() {
-            Token = File.ReadAllText(".dc2"),
-            TokenType = TokenType.Bot,
-            Intents = DiscordIntents.AllUnprivileged | DiscordIntents.MessageContents
-        });
-        
-        discord.MessageCreated += async (s, e) => {
-            if (e.Message.Content.ToLower().StartsWith("ping")) {
-                await e.Message.RespondAsync("pong!");
+    private static DiscordClient? discord;
+
+    public static async Task Main(string[] args) {
+        await Start(); // Because this call is not awaited, execution of the current method continues before the call is completed
+        Console.WriteLine("Enter 'q' to stop server");
+
+        shutdown:
+        var userInput = Console.ReadLine();
+        if (userInput == "q") {
+            Console.WriteLine("Shutting down server..");
+            if (discord != null) {
+                await discord.DisconnectAsync();
             }
-        };
-        Console.WriteLine("DiscordC2::Server booting..");
-        await discord.ConnectAsync();
-        Console.WriteLine("DiscordC2::Booting finished..");
-        await Task.Delay(-1);
-        Console.WriteLine("DiscordC2::Server task exited unexpectedly..");
-     }
+        } else goto shutdown;
+    }
+
     //Using add-type this entry point is callable from powershell
     //[DiscordC2.Server]::Start()
-     public static async Task Start() {
-        var discord = new DiscordClient(new DiscordConfiguration() {
-            Token =  File.ReadAllText("/.dc2"),
-            TokenType = TokenType.Bot,
-            Intents = DiscordIntents.AllUnprivileged | DiscordIntents.MessageContents
-        });
+    public static async Task Start() {
+        discord = new DiscordClient(new DiscordConfiguration() {
+                Token =  File.ReadAllText(".dc2"),
+                TokenType = TokenType.Bot,
+                Intents = DiscordIntents.AllUnprivileged | DiscordIntents.MessageContents
+        }); 
 
         discord.MessageCreated += async (s, e) => {
             if (e.Message.Content.ToLower().StartsWith("ping")) {
@@ -39,8 +36,6 @@ namespace DiscordC2;
 
         Console.WriteLine("DiscordC2::Server booting..");
         await discord.ConnectAsync();
-        Console.WriteLine("DiscordC2::Booting finished..");
-        await Task.Delay(-1);
-        Console.WriteLine("DiscordC2::Server task exited unexpectedly..");
-     }
+        Console.WriteLine("DiscordC2::Booting finished");
+    }
  }
