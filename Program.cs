@@ -6,7 +6,7 @@ namespace DiscordC2;
     private static DiscordClient? discord;
 
     public static async Task Main(string[] args) {
-        await Start(); // Because this call is not awaited, execution of the current method continues before the call is completed
+        await Start();
         Console.WriteLine("Enter 'q' to stop server");
 
         shutdown:
