@@ -19,3 +19,4 @@ Currently, the bot replies with "pong" to messages containing "ping"</br>
 * Support for several hosts, each getting their separate channel in the discord server.
   * The channels lets you run commands against that specific host
   * A "main" channel will let you run commands in bulk
+* Agent spawner that spawns agents using a specific bot token
