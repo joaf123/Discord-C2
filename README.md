@@ -20,3 +20,17 @@ Currently, the bot replies with "pong" to messages containing "ping"</br>
   * The channels lets you run commands against that specific host
   * A "main" channel will let you run commands in bulk
 * Agent spawner that spawns agents using a specific bot token
+
+---
+ 
+**Intended Use:**
+
+This code is intended for **educational purposes only**. It can be used to explore the research concepts presented and understand red team methodologies. 
+
+**Not for Malicious Activity:**
+
+This code should not be used for any malicious activities or real-world attacks. 
+
+**Disclaimer:**
+
+The authors are not responsible for any misuse of this code. 
