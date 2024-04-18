@@ -15,7 +15,7 @@ run cmd or powershell, and retrive results:
 * `cmd ipconfig` runs ipconfig in cmd and returns result
 * `pwsh dotnet --version` runs dotnet --version in powershell and returns result
 
-![image](https://github.com/joaf123/Discord-C2/assets/56757601/70295576-f372-40f0-9f9d-cebeb1027a31)
+![image](https://github.com/joaf123/Discord-C2/assets/56757601/13ab8281-410e-4b41-a693-c557d491fc9e)
 
 With coming updates the bot will create a new channel when a new host is encountered. The channels name will reflect that of the infected computers hostname / IP. Commands entered here will run on that host **only**. 
 
