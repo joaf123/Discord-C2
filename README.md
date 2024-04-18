@@ -11,7 +11,15 @@ This is a temporary solution during development, it will be obfuscated to a much
 
 
 ### Features
-Currently, the bot replies with "pong" to messages containing "ping"</br>
+run cmd or powershell, and retrive results:
+* `cmd ipconfig` runs ipconfig in cmd and returns result
+* `pwsh dotnet --version` runs dotnet --version in powershell and returns result
+
+![image](https://github.com/joaf123/Discord-C2/assets/56757601/70295576-f372-40f0-9f9d-cebeb1027a31)
+
+With coming updates the bot will create a new channel when a new host is encountered. The channels name will reflect that of the infected computers hostname / IP. Commands entered here will run on that host **only**. 
+
+In addition a **"Bulk/Batch Control"** channel will get setup by the bot where, commands can be triggered for all infected hosts.
 
 ### Planned features
 * Slash command that takes an argument and runs it as CMD/PowerShell commands on the host, and replies with its results in chat.
