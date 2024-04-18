@@ -21,6 +21,8 @@ With coming updates the bot will create a new channel when a new host is encount
 
 In addition a **"Bulk/Batch Control"** channel will get setup by the bot where, commands can be triggered for all infected hosts.
 
+---
+
 ### Planned features
 * Slash command that takes an argument and runs it as CMD/PowerShell commands on the host, and replies with its results in chat.
 * Slash command that takes the path to a DLL and attempts to inject it into some process on the host machine.
