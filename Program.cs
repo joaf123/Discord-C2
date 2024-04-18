@@ -80,14 +80,8 @@ namespace DiscordC2;
                 var items = lineData.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
                 StringBuilder builder = new();
-                foreach (var item in items)
-                {
-                    if (item.Contains("["))
-                    {
-                        builder.AppendLine(item.Substring(0, item.IndexOf("[", StringComparison.Ordinal) - 1));
-                    } else {
-                        builder.AppendLine(item);
-                    }
+                foreach (var item in items) {
+                    builder.AppendLine(item);
                 }
 
                 return (true, builder.ToString(), null)!;
